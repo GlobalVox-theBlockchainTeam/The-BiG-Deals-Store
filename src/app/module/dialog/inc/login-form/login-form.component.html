@@ -1,0 +1,17 @@
+<h3>Login</h3>
+<form novalidate [formGroup]="form">
+    <mat-form-field appearance="fill" class="full-width-form-field">
+        <mat-label>Email</mat-label>
+        <input matInput #email placeholder="" formControlName="username" type="email" required>
+        <mat-error *ngIf="false">Error</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width-form-field">
+        <mat-label>Password</mat-label>
+        <input matInput #password placeholder="" formControlName="password" type="password" required>
+        <mat-error *ngIf="false">Error</mat-error>
+    </mat-form-field>
+    <div class="d-flex flex-items-center">
+        <div><a [routerLink]="" (click)="goToRegister()">Register now</a></div>
+        <button class="ml-auto" mat-raised-button color="primary" (click)="onSubmit()" type="submit" [disabled]="!form.valid">Login</button>
+    </div>
+</form>

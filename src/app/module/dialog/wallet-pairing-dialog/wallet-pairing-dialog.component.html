@@ -1,0 +1,21 @@
+<h3>Pair your wallet</h3>
+<form novalidate [formGroup]="form">
+    <mat-form-field appearance="fill" class="full-width-form-field">
+        <mat-label>Seed phrase</mat-label>
+        <input matInput #seed placeholder="" formControlName="seed" type="text" required>
+        <mat-error *ngIf="false">Error</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width-form-field">
+        <mat-label>Wallet address</mat-label>
+        <input matInput #wallet placeholder="" formControlName="wallet" type="text" required>
+        <mat-error *ngIf="false">Error</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width-form-field">
+        <mat-label>Pass phrase</mat-label>
+        <input matInput #pass placeholder="" formControlName="pass" type="password" required>
+        <mat-error *ngIf="false">Error</mat-error>
+    </mat-form-field>
+    <div class="d-flex flex-items-center">
+        <button class="ml-auto" mat-raised-button color="primary" (click)="onSubmit()" type="button" [disabled]="!form.valid">Pair</button>
+    </div>
+</form>

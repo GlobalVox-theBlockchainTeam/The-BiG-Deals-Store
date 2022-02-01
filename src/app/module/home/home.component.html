@@ -1,0 +1,28 @@
+<div class="body-container" *ngIf="!isLoading">
+    <div class="body-left-info">
+        <div class="container">{{product.getName}}</div>
+        <!-- <div class="extra-details" [innerHtml]="product.getShortDescription()"></div> -->
+        <div class="extra-details">MRP: {{currentFinalPriceText}}</div>
+        <div class="extra-details">Current Bid Price: {{currentBidPriceText}} <small><i>(1 bid = {{playValue}} Play)</i></small></div>
+        <div class="extra-details timer-countdown" *ngIf="isAuctionAvailable">
+            <!-- <countdown #cd [config]="config" (event)="handleCountdownEvent($event)"></countdown> -->
+            {{bidRemainingTimeFormatted}}
+        </div>
+        <div  class="extra-details timer-countdown" *ngIf="!auctionStarted">Auction starts in: {{auctionRemainingTimeFormatted}}</div>
+        <ng-container *ngIf="isLoggedIn && auctionStarted">
+            <div class="extra-details">
+                <button mat-raised-button color="primary" (click)="placeBid()" disabled="{{bidButtonDisabled}}">Bid</button>
+                <button mat-raised-button color="primary" class="ml-2">Buy now</button>
+            </div>
+            <div class="extra-details" *ngIf="isAuctionAvailable">Last Bidder: {{lastBidder}}</div>
+        </ng-container>
+        <ng-container *ngIf="!isLoggedIn">
+            <div class="extra-details">
+                <button mat-raised-button color="primary" (click)="login()">Login & Bid</button>
+            </div>
+        </ng-container>
+    </div>
+    <div class="body-right-image">
+        <img [src]="productImage" [alt]="productImage" [title]="productImage">
+    </div>
+</div>

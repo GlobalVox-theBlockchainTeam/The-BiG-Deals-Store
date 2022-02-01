@@ -1,0 +1,103 @@
+<ng-container *ngIf="!isLoading">
+    <ng-container *ngIf="showForm">
+        <mat-dialog-actions align="start" class="mb-1">
+            <h3>Add new address</h3>
+        </mat-dialog-actions>
+        <mat-dialog-content class="mat-typography">
+            <form novalidate [formGroup]="form">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Firstname</mat-label>
+                        <input matInput #firstname placeholder="" formControlName="firstname" required>
+                        <mat-error *ngIf="firstname.oninvalid">asdasd</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Lastname</mat-label>
+                        <input matInput #lastname placeholder="" formControlName="lastname" required>
+                        <mat-error *ngIf="false">Error</mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput #email placeholder="" formControlName="email" required>
+                        <mat-error *ngIf="email.oninvalid">asdasd</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Company</mat-label>
+                        <input matInput #company placeholder="" formControlName="company" required>
+                        <mat-error *ngIf="false">Error</mat-error>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="countryList.length > 0">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Country</mat-label>
+                        <mat-select formControlName="countryId" placeholder="Country" required>
+                            <mat-option *ngFor="let country of countryList" value="{{country.id}}">
+                            {{country.full_name_english}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>State</mat-label>
+                        <mat-select formControlName="region" placeholder="State" required [disabled]="!region">
+                            <mat-option *ngFor="let reg of region?.available_regions" value="{{reg.code}}">
+                            {{reg.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Street</mat-label>
+                        <input matInput #streetData placeholder="" formControlName="streetData" required>
+                        <mat-error *ngIf="streetData.oninvalid">asdasd</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>City</mat-label>
+                        <input matInput #city placeholder="" formControlName="city" required>
+                        <mat-error *ngIf="city.oninvalid">asdasd</mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Postcode</mat-label>
+                        <input matInput #postcode placeholder="" formControlName="postcode" required>
+                        <mat-error *ngIf="postcode.oninvalid">asdasd</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Telephone</mat-label>
+                        <input matInput #telephone placeholder="" formControlName="telephone" required>
+                        <mat-error *ngIf="telephone.oninvalid">asdasd</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="d-flex flex-items-center">
+                    <div><a [routerLink]="" *ngIf="customer.addresses.length > 0" (click)="closeAddressForm()">Back</a></div>
+                    <button class="ml-auto" mat-raised-button color="primary" (click)="onSubmit()" type="submit" [disabled]="!form.valid">Save & Next</button>
+                </div>
+            </form>
+        </mat-dialog-content>
+    </ng-container>
+    <ng-container *ngIf="!showForm">
+        <mat-dialog-actions align="end" class="mb-1">
+            <button mat-raised-button  color="primary" (click)="openAddressForm()">Add new address</button>
+        </mat-dialog-actions>
+        <mat-dialog-content class="mat-typography">
+            <ul class="list-style-none">
+                <li *ngFor="let address of customer.addresses" class="d-inline-block col-4 p-2">
+                    <mat-card class="address-card">
+                        <!-- <mat-card-title>{{address.firstname}} {{address.lastname}}</mat-card-title> -->
+                        <mat-card-subtitle>{{address.firstname}} {{address.lastname}} <i title="Default Shipping Address" *ngIf="address?.default_shipping" class="fas fa-shipping-fast"></i> <i title="Default Billing Address" *ngIf="address?.default_billing" class="fas fa-file-invoice"></i></mat-card-subtitle>
+                        <mat-card-content>
+                        <p>{{address.street.join(', ')}}, {{address.city}}, {{address.region?.region}} - {{address.postcode}}</p>
+                        <p>{{address.telephone}}</p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                        <button mat-raised-button color="primary" (click)="submitExistingAddress(address)">Use this address</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </li>
+            </ul>
+        </mat-dialog-content>
+    </ng-container>
+</ng-container>

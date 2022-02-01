@@ -1,0 +1,21 @@
+<mat-stepper #stepper>
+    <mat-step>
+        <ng-template matStepLabel>Address</ng-template>
+        <ng-template matStepContent>
+            <app-customer-address (saveAndNext)="addressSaved($event)"></app-customer-address>
+        </ng-template>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Payment</ng-template>
+        <ng-template matStepContent>
+            <app-order-payment></app-order-payment>
+        </ng-template>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Order</ng-template>
+        <app-order-success [orderId]="orderId"></app-order-success>
+        <div class="text-right">
+            <button mat-raised-button color="primary" (click)="closeDialog()">Close</button>
+        </div>
+    </mat-step>
+</mat-stepper>

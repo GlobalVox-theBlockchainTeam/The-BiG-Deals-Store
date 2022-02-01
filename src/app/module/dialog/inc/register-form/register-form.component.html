@@ -1,0 +1,31 @@
+<h3>Register</h3>
+<form novalidate [formGroup]="form">
+    <div formGroupName="customer">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Firstname</mat-label>
+                <input matInput #firstname placeholder="" formControlName="firstname" required>
+                <mat-error *ngIf="firstname.oninvalid">asdasd</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Lastname</mat-label>
+                <input matInput #lastname placeholder="" formControlName="lastname" required>
+                <mat-error *ngIf="false">Error</mat-error>
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="fill" class="full-width-form-field">
+            <mat-label>Email</mat-label>
+            <input matInput #email placeholder="" formControlName="email" type="email" required>
+            <mat-error *ngIf="false">Error</mat-error>
+        </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill" class="full-width-form-field">
+        <mat-label>Password</mat-label>
+        <input matInput #password placeholder="" formControlName="password" type="password" required>
+        <mat-error *ngIf="false">Error</mat-error>
+    </mat-form-field>
+    <div class="d-flex flex-items-center">
+        <div >Already have an account? <a [routerLink]="" (click)="goToLogin()">Login</a></div>
+        <button class="ml-auto" mat-raised-button color="primary" (click)="onSubmit()" type="submit" [disabled]="!form.valid">Register</button>
+    </div>
+</form>

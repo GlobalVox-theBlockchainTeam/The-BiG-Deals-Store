@@ -1,0 +1,36 @@
+<div *ngIf="isLoading" [style.width]="'16px'" class="d-flex ml-auto mr-auto mt-2">
+    <mat-spinner [strokeWidth]="1" [diameter]="16"></mat-spinner>
+</div>
+<div *ngIf="!isLoading">
+    <div class="container-lg clearfix">
+        <form [formGroup]="form" novalidate>
+            <div class="d-flex flex-items-center">
+                <mat-form-field class="auto-width-form-field" appearance="fill">
+                    <mat-label>Play</mat-label>
+                    <span matPrefix><img [src]="bidHammerIcon" class="sol-wallet-icon"></span>
+                    <mat-hint align="start"><strong>{{playPrice?.play}} {{playPrice?.currency}}</strong></mat-hint>
+                    <input type="number" matInput formControlName="playFormControl">
+                </mat-form-field> 
+                <span class="ml-3 mr-3">=</span>
+                <mat-form-field class="auto-width-form-field" appearance="fill">
+                    <mat-label>{{tokenName}}</mat-label>
+                    <span matPrefix><img [src]="tokenLogo" class="sol-wallet-icon"> </span>
+                    <mat-hint align="start"><strong>{{playPrice?.big}} {{playPrice?.currency}}</strong></mat-hint>
+                    <input type="number" matInput formControlName="bigFormControl">
+                </mat-form-field> 
+            </div>
+            <div class="d-flex flex-items-center">
+                
+            </div>
+            <div class="d-flex flex-items-center">
+                <button class="ml-auto" mat-raised-button color="primary" (click)="onSubmit()" type="submit" [disabled]="!form.valid">Buy Play</button>
+            </div>
+        </form>
+        <div *ngFor="let package of playPackages" class="p-2 float-left col-4 border">
+            <h3 class="text-center">{{package.package_name}}</h3>
+            <p>Play: {{package.play_token}}</p>
+            <p>Price: {{package.big_token}} Big token</p>
+            <div class="text-center"><button class="ml-auto" mat-raised-button color="primary" (click)="buyPlay(package)" [disabled]="buyButtonDisabled" type="button">Buy now</button></div>
+        </div>
+    </div>
+</div>

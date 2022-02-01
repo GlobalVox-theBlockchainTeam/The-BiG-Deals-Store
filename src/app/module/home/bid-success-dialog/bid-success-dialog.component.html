@@ -1,0 +1,22 @@
+<div class="row">
+    <ng-container *ngIf="bidResult == 'won'">
+        <div class="d-flex">
+            <h1 class="text-success">
+                <i class="far fa-check-circle"></i>
+            </h1>
+            <h3>You Won!!!</h3>
+            <h4>Congratulation {{customer.getName()}}!!!</h4>
+        </div>
+        <!-- <div class="text-right">
+            <button mat-raised-button color="primary" (click)="openCheckoutDialog()">Checkout</button>
+        </div> -->
+    </ng-container>
+    <ng-container *ngIf="bidResult != 'won'">
+        <div class="d-flex">
+            <h1 class="text-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+            </h1>
+            <h3>Better luck next time!!!</h3>
+        </div>
+    </ng-container>
+</div>

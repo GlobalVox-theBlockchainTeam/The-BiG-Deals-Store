@@ -1,0 +1,89 @@
+<div *ngIf="!isTransferToken">
+    <mat-accordion class="mt-2">
+        <mat-expansion-panel class="mb-3">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="pt-3">
+                    <b>USDT</b>
+                    <p class="pl-1 pr-1">Tether</p>
+                    <div class="coin-price-qty">
+                        <span>
+                            <b>10</b>
+                        </span>
+                        <span class="pl-2">$10</span>
+                    </div>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            Tether Address:
+            <br/>
+            <strong>{{collpase1Address}}</strong>
+            <button mat-raised-button color="primary" class="float-right" (click)="confirmTransferClick()">Transfer</button>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="mb-3">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <b>Main Account</b>
+                    <div class="coin-price-qty">
+                        <span>
+                            <b>10</b>
+                        </span>
+                        <span class="pl-2">$10</span>
+                    </div>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            Tether Address:
+            <br/>
+            <strong>{{collpase2Address}}</strong>
+            <button mat-raised-button color="primary" class="float-right" (click)="confirmTransferClick()">Transfer</button>
+        </mat-expansion-panel>
+        <label class="coin-name-tab mt-2" *ngFor="let coin of coinList" [ngClass]="{'coin-active': selectedCoin == coin.name}" (click)="selectedCoin = coin.name">
+            <span>{{coin.name}}</span>
+        </label>
+        <mat-expansion-panel class="mt-3" [expanded]="true" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="pt-3">
+                    <b>USDT</b>
+                    <p class="pl-1 pr-3">Tether</p>
+                    <b>Walleat address:</b>
+                    <div class="coin-price-qty">
+                        <span>
+                            <b>10</b>
+                        </span>
+                        <span class="pl-2">$10</span>
+                    </div>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            Tether Address:
+            <br/>
+            <strong>{{getSelectedCoinWalleatAddress()}}</strong>
+            <button mat-raised-button color="primary" class="float-right" (click)="confirmTransferClick()">Transfer</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+<div *ngIf="isTransferToken">
+    <div class="body-left-info w-100">
+        <div class="extra-details black-color">Coin : {{selectedCoin}}</div>
+        <div class="extra-details black-color">Wallet Address : {{getSelectedCoinWalleatAddress()}}</div>
+        <div class="extra-details black-color">Amount : $10</div>
+        <div class="extra-details">
+            <button mat-raised-button color="primary" (click)="transferClick()">Transfer</button>
+        </div>
+    </div>
+</div>
+<ng-template #coinSuccessMsgDialog>
+    <h2 matDialogTitle>Success</h2>
+    <mat-dialog-content>
+        <div class="text-center mb-2">
+            <mat-icon class="check-icon">check_circle_outline</mat-icon>
+        </div>
+        <h2 class="text-center">Your coin transfer successfully.</h2>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary" (click)="closeDialog()">Close</button>
+    </mat-dialog-actions>
+</ng-template>

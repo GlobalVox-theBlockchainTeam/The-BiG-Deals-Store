@@ -1,0 +1,112 @@
+<!-- header -->
+<!-- <mat-drawer #drawer class="example-sidenav" hasBackdrop="true" position="end" mode="side">
+    <a href="#" class="sidebar_close_btn" (click)="drawer.toggle()"><i class="fas fa-times"></i></a>
+    <div class="sidebar">
+        <a href="#" class="border_bottom">Home</a>
+        <a href="#" class="border_bottom">Shop</a>
+        <a href="#" class="border_bottom">Products</a>
+        <a href="#" class="border_bottom">Pages</a>
+        <a href="#" class="border_bottom">Blog</a>
+        <a href="#" class="border_bottom">Contact</a>
+    </div>
+</mat-drawer> -->
+<div class="header-container">
+    <div class="header-content d-flex flex-items-center">
+        <!-- social media icons -->
+        <div class="social-media-container headers-container-size">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-google"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+        
+        <!-- logo -->
+        <div class="logo-container headers-container-size">
+            <img [src]="logoImage" class="logo-image" alt="The Big Deals Logo" >
+        </div>
+        
+        <!-- options -->
+        <div class="my-option-container headers-container-size">
+            <a *ngIf="!isLoggedIn" [routerLink]="" (click)="openRegisterDialog()"><i class="fas fa-user"></i></a>
+            <a *ngIf="isLoggedIn && customer.id" [routerLink]="" [matMenuTriggerFor]="userMenu">{{customer.firstname}} <i class="fas fa-caret-down"></i></a>
+              <mat-menu #userMenu="matMenu">
+                <button mat-menu-item>
+                  <span>{{customer.getName()}}</span>
+                </button>
+                <button mat-menu-item (click)="logout()">
+                  <span>Logout</span>
+                </button>
+              </mat-menu>
+            
+            <a [routerLink]="" *ngIf="isLoggedIn" [matMenuTriggerFor]="walletMenu" (menuOpened)="walletMenuOpened()"><i class="fas fa-wallet" ></i>&nbsp;<i class="fas fa-caret-down"></i></a>
+            <mat-menu #walletMenu="matMenu" xPosition="before" >
+                <div *ngIf="walletLoading" class="d-flex ml-auto mr-auto mt-2" [style.width]="'16px'" >
+                    <mat-spinner [strokeWidth]="1" [diameter]="16"></mat-spinner>
+                </div>
+                <ng-container *ngIf="!walletLoading && userWalletData.address == ''">
+                    <button mat-menu-item>
+                        <span>Connect your Wallet</span>
+                    </button>
+                    <button mat-menu-item class="d-flex" (click)="connectWallet(walletType.phantom)">
+                        <img [src]="walletIcons.phantom" class="sol-wallet-icon" alt="Phantom Wallet" >
+                        <span>Phantom</span>
+                    </button>
+                    <button mat-menu-item class="d-flex" (click)="connectWallet(walletType.solflare)">
+                        <img [src]="walletIcons.solflare" class="sol-wallet-icon" alt="Solflare Wallet" >
+                        <span>Solflare</span>
+                    </button>
+                    <button mat-menu-item class="d-flex" (click)="connectWallet(walletType.sollet)">
+                        <img [src]="walletIcons.sollet" class="sol-wallet-icon" alt="Sollet Wallet" >
+                        <span>Sollet</span>
+                    </button>
+                    <button mat-menu-item class="d-flex" (click)="connectWallet(walletType.big)">
+                        <img [src]="walletIcons.big" class="sol-wallet-icon" alt="BiG Wallet" >
+                        <span>Create new wallet</span>
+                    </button>
+                </ng-container>
+                <ng-container *ngIf="!walletLoading && userWalletData.address != ''">
+                    <button mat-menu-item class="d-flex">
+                        <img [src]="tokenLogo" class="sol-wallet-icon" [alt]="getWalletTitle(userWalletData.wallet_type)" >
+                        <span>{{userWalletData?.balance}} {{tokenName}}</span>
+                    </button>
+                    <button mat-menu-item class="d-flex">
+                        <img [src]="bidHammerIcon" class="sol-wallet-icon" [alt]="getWalletTitle(userWalletData.wallet_type)" >
+                        <span>{{userWalletData?.play ? userWalletData?.play : 0}} PLAY</span>
+                    </button>
+                    <button mat-menu-item (click)="openBuyPlayDialog()">
+                        <span>Buy Play</span>
+                    </button>
+                    <button mat-menu-item (click)="disconnectWallet()">
+                        <span>Disconnect Wallet</span>
+                    </button>
+                </ng-container>
+            </mat-menu>
+            <!-- <a [routerLink]="" *ngIf="isLoggedIn" [matMenuTriggerFor]="cartMenu" (menuOpened)="getCartItems()"><i class="fas fa-cart-arrow-down"></i> {{totalCartItems}}</a> -->
+            <mat-menu #cartMenu="matMenu" >
+                <div *ngIf="cartLoading" class="d-flex ml-auto mr-auto mt-2" [style.width]="'16px'" >
+                    <mat-spinner [strokeWidth]="1" [diameter]="16"></mat-spinner>
+                </div>
+                <ng-container *ngIf="!cartLoading">
+                    <span *ngIf="totalCartItems === 0" mat-menu-item>
+                        <span>Cart is empty</span>
+                    </span>
+                    <ul *ngIf="totalCartItems > 0">
+                        <li *ngFor="let cartItem of cartItems" mat-menu-item>
+                            {{cartItem.qty}} x {{cartItem.name}}
+                        </li>
+                        <li mat-menu-item>
+                            <button mat-raised-button color="primary" (click)="openCheckoutDialog()">Checkout</button>
+                        </li>
+                    </ul>
+                </ng-container>
+            </mat-menu>
+        </div>
+
+        <!-- menu button -->
+        <!-- <mat-drawer-container class="example-container" hasBackdrop="true" autosize>
+        </mat-drawer-container>
+        <div class="menu-container headers-container-size">
+            <a href="#" (click)="drawer.toggle()">Menu <i class="fas fa-bars"></i></a>
+        </div> -->
+    </div>
+</div>

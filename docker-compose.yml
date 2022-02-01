@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  bigdeal_angular:
+    build: .
+    ports:
+      - "4200:4200"
+    container_name: bigdeal_angular
+    volumes:
+      - "./:/usr/src/app"
+      - "./node_modules:/usr/src/app/node_modules"
+# volumes:
+#   bigdeal_angular:

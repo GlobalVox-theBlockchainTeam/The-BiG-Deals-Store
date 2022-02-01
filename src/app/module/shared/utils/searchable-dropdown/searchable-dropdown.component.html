@@ -1,0 +1,13 @@
+<ng-container [formGroup]="dropdownFormGroup">
+  <mat-form-field appearance="outline">
+    <mat-label>{{label}}</mat-label>
+    <mat-select [disableOptionCentering]="true" [disabled]="disableForm" [formControl]="dropdownCtrl">
+      <mat-option *ngFor="let entry of dropdownValueOption" [value]="entry">
+        {{ optionName(entry) }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-error *ngIf="required && dropdownCtrl.hasError('required') && dropdownCtrl.touched">
+    {{ 'common-input-required' }}
+  </mat-error>
+</ng-container>

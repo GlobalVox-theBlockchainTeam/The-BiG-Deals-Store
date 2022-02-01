@@ -1,0 +1,19 @@
+<div class="body-container">
+    <div class="body-left-info">
+        <button mat-raised-button color="primary" (click)="getAuctionDetails()">Auction Details</button>
+        <button mat-raised-button color="primary" class="ml-1" (click)="resetAuction()">Reset Auction</button>
+        <button mat-raised-button color="primary" class="ml-1" (click)="enableViableProduct()">Enable Viable Product</button>
+        <button mat-raised-button color="primary" class="ml-1" (click)="disableViableProduct()">Disable Viable Product</button>
+
+        <div class="extra-details">MAX_USER_BID: {{auctionDetails?.MAX_USER_BID}}</div>
+        <div class="extra-details">PRODUCT_RETAIL_PRICE: ${{auctionDetails?.PRODUCT_RETAIL_PRICE}}</div>
+        <div class="extra-details">PRODUCTS_VIABLE_PRICE: ${{auctionDetails?.PRODUCTS_VIABLE_PRICE}}</div>
+        <div class="extra-details">PLAY_PRICE: ${{auctionDetails?.PLAY_PRICE}}</div>
+        <div class="extra-details">BID_STOP_PRICE: ${{auctionDetails?.BID_STOP_PRICE}}</div>
+        <div class="extra-details">PRODUCT_PLAY_VALUE_PER_BID: {{auctionDetails?.PRODUCT_PLAY_VALUE_PER_BID}}</div>
+        <div class="extra-details">PRODUCT_VIABLE: {{auctionDetails?.PRODUCT_VIABLE}}</div>
+        <div class="extra-details">BID_TIME: {{auctionDetails?.BID_TIME}}</div>
+        
+        
+    </div>
+</div>

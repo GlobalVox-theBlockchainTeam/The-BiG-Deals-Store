@@ -1,0 +1,205 @@
+@import "@primer/css/index.scss";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-image : radial-gradient(circle closest-corner at center 125px,rgb(48,53,134),rgb(28,32,88)); overflow-x: hidden;}
+.mat-body, .mat-body-1, .mat-typography {line-height: 1;}
+a {text-decoration: none;}
+.app-container{
+    position :absolute;
+    width : 100vw;
+    height : 100vh;
+}
+.back-text{
+    opacity: 0.2;
+    position: absolute;
+    font-weight : 800;
+    font-size: 150px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    margin-left : 24%;
+    margin-top : 15%;
+}
+.header-content{
+    color : white;
+    display: flex;
+    justify-content:space-between;
+    width : 95%;
+    margin-left : 2.5%;
+    margin-top : 2.5%;
+    text-align : center;
+}
+.headers-container-size{
+    width : 18%;
+}
+
+.headers-container-size a{
+    color : white;
+}
+
+.social-media-container{
+    display : flex;
+    justify-content: space-around;
+}
+
+.search-container{
+    display : flex;
+    text-align: left;
+}
+.search-container .fa-search {margin-top: 5px;}
+
+.my-option-container{
+    display : flex;
+    justify-content: space-around;
+}
+
+.menu-container{
+    display : flex;
+    justify-content: right;
+}
+
+.logo-container{
+    display : flex;
+    justify-content: left;
+}
+
+.logo-container img{
+    width : 120px;
+    margin-top: -20px;
+    filter: drop-shadow(2px 2px 0px #dedede);
+}
+
+.menu-container a{
+    padding-left: 2%;
+}
+
+.body-container{
+    position : relative;
+    width : 95%;
+    margin-top : 2.5%;
+    margin-left : 2.5%;
+    height : 70%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.body-left-info{
+    width : 50%;
+}
+
+.body-left-info .container{
+    margin-left : 10%;
+    margin-top: 12%;
+    width : 100%;
+    font-family: 'Roboto', sans-serif;
+    color : white;
+    font-weight: 800;
+    font-size: 65px;
+}
+
+.extra-details{
+    font-family: 'Roboto', sans-serif;
+    color : white;
+    font-size: 20px;
+    margin-left : 10%;
+    margin-top: 5%;
+    line-height: 150%;
+}
+
+.body-right-image{
+    width : 50%;
+    margin-top : 2%;
+}
+
+.body-right-image img{
+    margin-left: 10%;
+    width : 60%;
+}
+
+.search{
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    color :white;
+    padding-left: 5%;
+    font-size : 15px;
+}
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+color: white;
+opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+color: white;
+}
+.sidebar{
+    width: 320px;
+    padding-top: 40px;
+}
+
+.sidebar a{
+    position : relative;
+    text-decoration: none;
+    padding : 20px;
+    color : rgb(39, 39, 39);
+    display: block;
+}
+
+.sidebar .border_bottom:hover{
+    background-color: rgb(233, 233, 233);
+}
+
+.border_bottom{
+    border-bottom: 1px solid rgb(233, 233, 233);
+}
+.sidebar_close_btn {position: absolute; top: 10px; left: 15px; z-index: 1; font-size: 20px;}
+.ml-2 {margin-left: 2rem !important;}
+.full-width-form-field {width: 100%;}
+.auto-width-form-field .mat-form-field-infix {width: auto;}
+.coin-price-qty{
+    position: absolute;
+    right: 50px;
+}
+.float-right{
+    float: right;
+}
+.coin-name-tab {
+    font-weight: 500;
+    color: gray;
+    cursor: pointer;
+    font-size: 18px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.coin-active {
+    background: lightblue;
+    border-radius: 10px;
+    color: cornflowerblue;
+}
+.check-icon{
+    font-size: 110px;
+    color: green;
+    height: 110px !important;
+    width: 110px !important;
+}
+.black-color{
+    color: black !important;
+}
+.w-100 {
+    width: 100% !important;
+}
+
+.mat-horizontal-stepper-header{
+    pointer-events: none !important;
+}
+
+.sol-wallet-icon {
+    width: 25px;
+    margin-right: 10px;
+    align-self: center;
+}
